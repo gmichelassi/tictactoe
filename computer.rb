@@ -9,7 +9,6 @@ class Computer < Player
 
   def move(board, available_spaces)
     spot = get_spot(board)
-
     board.board[spot] = mark
   end
 

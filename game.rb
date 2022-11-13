@@ -11,10 +11,9 @@ class Game
 
   def start_game
     print_board
-    puts "Enter [0-8]:"
 
     until stop_game
-      first_player.move(board.board, board.available_spaces)
+      first_player.move(@board, board.available_spaces)
 
       if !stop_game
         second_player.move(@board, board.available_spaces)

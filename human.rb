@@ -7,7 +7,7 @@ class Human < Player
 
   def move(board, available_spaces)
     spot = get_input(available_spaces)
-    board[spot] = mark
+    board.board[spot] = mark
   end
 
   private
