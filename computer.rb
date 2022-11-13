@@ -1,13 +1,15 @@
 require './player'
 
 class Computer < Player
-  def initialize(mark:, identifier: :computer, difficulty: :hard)
-    super(mark: mark, identifier: identifier)
+  def initialize(mark:, name: :computer, difficulty: :hard)
+    super(mark: mark, name: name)
 
     @difficulty = difficulty
   end
 
   def move(board, available_spaces)
+    puts "#{name}'s turn. Pick a number from #{available_spaces}!"
+
     spot = get_spot(board)
     board.board[spot] = mark
   end

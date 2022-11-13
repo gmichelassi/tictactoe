@@ -1,7 +1,7 @@
 class Player
-  def initialize(mark:, identifier:)
+  def initialize(mark:, name:)
     @mark = mark
-    @identifier = identifier
+    @name = name
   end
 
   def move(board)
@@ -10,7 +10,7 @@ class Player
 
   private
   
-  attr_reader :mark, :identifier
+  attr_reader :mark, :name
 
   def mark_board(board)
     raise NotImplementedError

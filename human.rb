@@ -1,11 +1,13 @@
 require './player'
 
 class Human < Player
-  def initialize(mark:, identifier: :human)
+  def initialize(mark:, name: :human)
     super
   end
 
   def move(board, available_spaces)
+    puts "#{name}'s turn. Pick a number from #{available_spaces}!"
+
     spot = get_input(available_spaces)
     board.board[spot] = mark
   end
