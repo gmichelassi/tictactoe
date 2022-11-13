@@ -1,10 +1,11 @@
 require './board'
+require './human'
 
 class Game
   def initialize
     @board = ::Board.new
+    @first_player = ::Human.new(mark: "O")
     @com = "X" # the computer's marker
-    @hum = "O" # the user's marker
   end
 
   def start_game
@@ -12,26 +13,17 @@ class Game
     print_board
     puts "Enter [0-8]:"
     # loop through until the game was won or tied
-    until game_is_over? || game_is_tied?
-      get_human_spot
-      if !game_is_over? && !game_is_tied?
+    until stop_game
+      first_player.move(board.board, board.available_spaces)
+
+      if !stop_game
         eval_board
       end
+
       print_board
     end
-    puts "Game over"
-  end
 
-  def get_human_spot
-    spot = nil
-    until spot
-      spot = gets.chomp.to_i
-      if @board.board[spot] != "X" && @board.board[spot] != "O"
-        @board.board[spot] = @hum
-      else
-        spot = nil
-      end
-    end
+    puts "Game over"
   end
 
   def eval_board
@@ -55,7 +47,7 @@ class Game
 
   private
   
-  attr_reader :board
+  attr_reader :board, :first_player
 
   def stop_game
     game_is_over? || game_is_tied?
