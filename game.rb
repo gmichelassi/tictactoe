@@ -28,7 +28,7 @@ class Game
       puts "##################################"
     end
 
-    puts "Game over"
+    ending_message
   end
 
   private
@@ -49,6 +49,25 @@ class Game
 
   def game_is_over?
     board.game_is_over?
+  end
+
+  def ending_message
+    if game_is_tied?
+      puts "Game Over. It's a tie!"
+      return
+    end
+   
+    puts "Game Over. Congratulations #{winner_name}!"
+  end
+
+  def winner_name
+    winner_mark = board.get_winner_mark
+
+    return if !winner_mark
+
+    return first_player.name if winner_mark == first_player.mark
+
+    second_player.name
   end
 end
 

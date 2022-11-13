@@ -59,4 +59,17 @@ class Board
       index if position != "X" && position != "O"
     end.compact
   end
+
+  def get_winner_mark
+    return if !game_is_over?
+
+    return board[0] if [board[0], board[1], board[2]].uniq.length == 1
+    return board[3] if [board[3], board[4], board[5]].uniq.length == 1
+    return board[6] if [board[6], board[7], board[8]].uniq.length == 1
+    return board[0] if [board[0], board[3], board[6]].uniq.length == 1
+    return board[1] if [board[1], board[4], board[7]].uniq.length == 1
+    return board[2] if [board[2], board[5], board[8]].uniq.length == 1
+    return board[0] if [board[0], board[4], board[8]].uniq.length == 1
+    return board[2] if [board[2], board[4], board[6]].uniq.length == 1
+  end
 end
